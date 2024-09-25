@@ -24,14 +24,14 @@ public class BookController {
     @GetMapping("/{id}")
     public ResponseEntity<Book> getBookById(@PathVariable Long id) {
         Optional<Book> book = bookService.getBookById(id);
-        System.out.println ("We are testing the Github");
+       
         return book.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping
     public ResponseEntity<Book> createBook(@RequestBody Book book) {
         Book savedBook = bookService.saveBook(book);
-        System.out.println ("We are testing the Github");
+     
         return new ResponseEntity<>(savedBook, HttpStatus.CREATED);
     }
 
@@ -39,7 +39,7 @@ public class BookController {
     @PutMapping("/{id}")
     public ResponseEntity<Book> updateBook(@PathVariable Long id, @RequestBody Book book) {
         Book updatedBook = bookService.updateBook(id, book);
-        System.out.println ("We are testing the Github");
+       
         return updatedBook != null ? ResponseEntity.ok(updatedBook) : ResponseEntity.notFound().build();
     }
 
